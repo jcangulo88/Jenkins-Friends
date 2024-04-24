@@ -3,7 +3,7 @@ pipeline
     agent any
     stages
     {
-        stage("Declaro numeros")
+        stage("Operaciones Aritmétricas")
         {
             steps
             {
@@ -12,17 +12,15 @@ pipeline
                    numero1 = 1000
                    numero2 = 3000
                    suma = numero1 + numero2
-                   println "El numero 1 es igual a: " + numero1
-                   println "El numero 2 es igual a: " + numero2
-                   println "La suma de los dos numeros es: " + suma
-                  if (numero1 == 4000)
-                   {
-                       println "El numero es igual a 4000"
-                   }
-                   else
-                   {
-                       println "El numero no es igual a 4000"
-                   }
+                   resta = numero1 - numero2
+                   multiplica = numero1 * numero2
+                   divide = numero1 / numero2
+                   println "El número 1 es igual a: " + numero1
+                   println "El número 2 es igual a: " + numero2
+                   println "La suma de los dos números es: " + suma
+                   println "La resta de los dos números es: " + resta
+                   println "La multiplicación de los dos números es: " + multiplica
+                   println "La división de los dos números es: " + divide                  
                 }
             }
         }
