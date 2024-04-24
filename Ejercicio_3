@@ -1,6 +1,14 @@
 pipeline
 {
     agent any
+    options
+    {
+        timeout(time:5, unit: 'MINUTES')
+    }
+    environment
+    {
+        RUTA_ABSOLUTA = "C:\\"
+    }
     stages
     {
         stage("Operaciones Aritmétricas")
@@ -22,6 +30,17 @@ pipeline
                    println "La multiplicación de los dos números es: " + multiplica
                    println "La división de los dos números es: " + divide                  
                 }
+            }
+        }
+        stage("Comando Bat")
+        {
+            steps
+            {
+                powershell '''
+                Write-Host "Hola desde PowerShell de Jenkins!"
+                Get-ChildItem C:\
+                '''
+                bat "ipconfig /flushdns"
             }
         }
     }
