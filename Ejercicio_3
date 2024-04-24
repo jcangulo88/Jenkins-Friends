@@ -1,5 +1,10 @@
 def numero1 = 1000
 def numero2 = 3000
+def suma = numero1 + numero2
+def resta = numero1 - numero2
+def multiplica = numero1 * numero2
+def divide = numero1 / numero2
+def fichero = "Informo por fichero los valores, suma: " + suma + " , resta: " + resta + " , multiplicacion:" + multiplica + " y la division es: " + divide
 pipeline
 {
     agent any
@@ -19,10 +24,6 @@ pipeline
             {
                 script
                 {
-                   def suma = numero1 + numero2
-                   def resta = numero1 - numero2
-                   def multiplica = numero1 * numero2
-                   def divide = numero1 / numero2
                    println "El número 1 es igual a: " + numero1
                    println "El número 2 es igual a: " + numero2
                    println "La suma de los dos números es: " + suma
@@ -45,8 +46,7 @@ pipeline
             {
                 script
                 {
-                    def suma1 = "Suma: " + suma
-                    writeFile(file: "Calculos_Stage1.txt", text: suma1)
+                    writeFile(file: "Calculos_Stage1.txt", text: fichero)
                     println "Se generó el fichero con la info del stage1"
                 }
             }
