@@ -64,7 +64,7 @@ pipeline
         }
         failure
         {
-            echo 'EL pipeline falló'
+            echo 'El pipeline falló'
         }
         unstable
         {
