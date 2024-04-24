@@ -1,3 +1,5 @@
+def numero1 = 1000
+def numero2 = 3000
 pipeline
 {
     agent any
@@ -17,12 +19,10 @@ pipeline
             {
                 script
                 {
-                   numero1 = 1000
-                   numero2 = 3000
-                   suma = numero1 + numero2
-                   resta = numero1 - numero2
-                   multiplica = numero1 * numero2
-                   divide = numero1 / numero2
+                   def suma = numero1 + numero2
+                   def resta = numero1 - numero2
+                   def multiplica = numero1 * numero2
+                   def divide = numero1 / numero2
                    println "El número 1 es igual a: " + numero1
                    println "El número 2 es igual a: " + numero2
                    println "La suma de los dos números es: " + suma
@@ -42,6 +42,37 @@ pipeline
                 '''
                 bat "ipconfig /flushdns"
             }
+        }
+        stage("Generar archivo TXT")
+        {
+            steps
+            {
+                script
+                {
+                    def suma1 = "Suma: " + suma
+                    writeFile(file: "Calculos_Stage1.txt", text: suma1)
+                    println "Se generó el fichero con la info del stage1"
+                }
+            }
+        }                  
+    }
+    post
+    {
+        always
+        {
+            echo "El pipeline se ejecutó. "
+        }
+        failure
+        {
+            echo 'EL pipeline falló'
+        }
+        unstable
+        {
+            echo "El pipeline no se ejecutó de forma estable."
+        }
+        success
+        {
+            echo "El pipeline fue exitoso"        
         }
     }
 }
