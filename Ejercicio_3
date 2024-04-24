@@ -1,0 +1,30 @@
+pipeline
+{
+    agent any
+    stages
+    {
+        stage("Declaro numeros")
+        {
+            steps
+            {
+                script
+                {
+                   numero1 = 1000
+                   numero2 = 3000
+                   suma = numero1 + numero2
+                   println "El numero 1 es igual a: " + numero1
+                   println "El numero 2 es igual a: " + numero2
+                   println "La suma de los dos numeros es: " + suma
+                  if (numero1 == 4000)
+                   {
+                       println "El numero es igual a 4000"
+                   }
+                   else
+                   {
+                       println "El numero no es igual a 4000"
+                   }
+                }
+            }
+        }
+    }
+}
