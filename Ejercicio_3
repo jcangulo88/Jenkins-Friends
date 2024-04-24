@@ -36,10 +36,6 @@ pipeline
         {
             steps
             {
-                powershell '''
-                Write-Host "Hola desde PowerShell de Jenkins!"
-                Get-ChildItem C:\
-                '''
                 bat "ipconfig /flushdns"
             }
         }
